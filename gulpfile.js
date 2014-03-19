@@ -6,7 +6,11 @@ var gulp = require('gulp'),
 gulp.task('dev-js', function() {
     return gulp.src('public/js/main.js')
         .pipe(browserify({
+        	// we have to transform the browserified version of node's 'fs' module to allow
+        	//	it to pull in file references (like .html templates and partials) in a browser
+        	//	context
         	transform: ['brfs'],
+        	// enable sourcemaps
         	debug: true,
         	shim: {
 	            angular: {
@@ -22,6 +26,7 @@ gulp.task('dev-js', function() {
 	            }
           	}
         }))
+        // handle errors to avoid gulp crashing when a watched file has errors
         .on('error', gutil.log)
         .pipe(gulp.dest('public/js/built'));
 });
@@ -45,16 +50,20 @@ gulp.task('prod-js', function() {
 	            }
           	}
         }))
+        // minify!
         .pipe(uglify({
         	mangle: false
         }))
         .pipe(gulp.dest('public/js/built'));
 });
 
+// default task acts as a 'dev' environment, watching your code and compiling as you
+//	develop
 gulp.task('default', ['dev-js'], function() {
     gulp.watch('public/js/main.js', ['dev-js']);
 
     gulp.watch('public/js/app/**/*.js', ['dev-js']);
 });
 
+// prod task acts as preparation for a production environment
 gulp.task('prod', ['prod-js']);
