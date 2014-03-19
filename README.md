@@ -38,9 +38,9 @@ New things are shiny! This boilerplate uses the following libraries and tools:
 
 1. Clone this repo (duh)
 2. Ensure you have gulp and browserify installed, if necessary
-3. 'npm install' to install all dependencies and napa packages
-4. Either 'npm start' to start the webserver, or use a package like supervisor or nodemon
-5. 'gulp' or 'gulp prod' to compile the client-side JS for the first time
+3. `npm install` to install all dependencies and napa packages
+4. Either `npm start` to start the webserver, or use a package like supervisor or nodemon
+5. `gulp` or `gulp prod` to compile the client-side JS for the first time
 6. Refresh your browser and marvel with joy!
 
 
