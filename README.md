@@ -36,7 +36,7 @@ New things are shiny! This boilerplate uses the following libraries and tools:
 #### How to run
 
 
-1. Clone this repo (duh)
+1. Clone this repo with `git clone https://github.com/jkymarsh/gulp-browserify-shim-angular-boilerplate.git`
 2. Ensure you have gulp and browserify installed, if necessary
 3. `npm install` to install all dependencies and napa packages
 4. Either `npm start` to start the webserver, or use a package like supervisor or nodemon
