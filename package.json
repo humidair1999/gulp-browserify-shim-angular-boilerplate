@@ -16,11 +16,11 @@
     "angular",
     "boilerplate"
   ],
-  "dependencies": {
-    "express": "3.x"
-  },
   "engines": {
     "node": ">=0.10.26"
+  },
+  "dependencies": {
+    "express": "3.x"
   },
   "devDependencies": {
     "gulp": "^3.5.6",
