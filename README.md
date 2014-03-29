@@ -39,7 +39,7 @@ New things are shiny! This boilerplate uses the following libraries and tools:
 2. Ensure you have `gulp` and `browserify` installed, if necessary
 3. `npm install` to install all dependencies and `napa` packages
 4. Either `npm start` to start the webserver, or use a package like `supervisor` or `nodemon`
-5. Check out the `gulpfile` for tasks to compile both the libs and the app code, and compile each
+5. Check out the `gulpfile` for tasks to compile both the libs bundle and the app code, and compile each
 6. Refresh your browser and marvel with joy!
 
 
@@ -58,4 +58,4 @@ This is still a work-in-progress! Make sure you check out the `.gitignore` and `
 #### Oh shit!
 
 
-There's a weird bug in the newest version(s) of `browserify` that prevent the `update` event from firing in `watchify`. After you clone this repo and run `npm install`, you may want to `cd` into watchify's directory and either downgrade its internal version of browserify, or wait until they patch it up.
+There's a weird bug in the newest version(s) of `browserify` that prevents the `update` event from firing in `watchify`. After you clone this repo and run `npm install`, you may want to `cd` into watchify's directory and either downgrade its internal version of browserify, or wait until they patch it up.
