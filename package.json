@@ -1,44 +1,44 @@
 {
-  "name": "gulp-browserify-shim-angular-boilerplate",
-  "version": "0.1.0",
-  "author": "J. Ky Marsh <jkymarsh@gmail.com>",
-  "description": "a boilerplate intended to get you started with express, gulp, browserify (and browserify-shim), and angular.",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/jkymarsh/gulp-browserify-shim-angular-boilerplate.git"
-  },
-  "keywords": [
-    "express",
-    "gulp",
-    "browserify",
-    "gulp-browserify",
-    "browserify-shim",
-    "angular",
-    "boilerplate"
-  ],
-  "engines": {
-    "node": ">=0.10.26"
-  },
-  "dependencies": {
-    "express": "3.x"
-  },
-  "devDependencies": {
-    "gulp-browserify": "^0.5.0",
-    "napa": "^0.4.1",
-    "brfs": "^1.0.0",
-    "gulp-util": "^2.2.14",
-    "gulp-uglify": "^0.2.1",
-    "gulp": "^3.6.0",
-    "watchify": "^0.6.3",
-    "vinyl-source-stream": "^0.1.1",
-    "gulp-rename": "^1.2.0"
-  },
-  "scripts": {
-    "start": "node server",
-    "install": "napa"
-  },
-  "napa": {
-    "angular": "angular/bower-angular",
-    "angular-route": "angular/bower-angular-route"
-  }
+    "name": "gulp-browserify-shim-angular-boilerplate",
+    "version": "0.1.0",
+    "author": "J. Ky Marsh <jkymarsh@gmail.com>",
+    "description": "a boilerplate intended to get you started with express, gulp, browserify (and browserify-shim), and angular.",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/jkymarsh/gulp-browserify-shim-angular-boilerplate.git"
+    },
+    "keywords": [
+        "express",
+        "gulp",
+        "browserify",
+        "gulp-browserify",
+        "browserify-shim",
+        "angular",
+        "boilerplate"
+    ],
+    "engines": {
+        "node": ">=0.10.26"
+    },
+    "dependencies": {
+        "express": "3.x"
+    },
+    "devDependencies": {
+        "gulp-browserify": "^0.5.0",
+        "napa": "^0.4.1",
+        "brfs": "^1.0.0",
+        "gulp-util": "^2.2.14",
+        "gulp-uglify": "^0.2.1",
+        "gulp": "^3.6.0",
+        "watchify": "^0.6.3",
+        "vinyl-source-stream": "^0.1.1",
+        "gulp-rename": "^1.2.0"
+    },
+    "scripts": {
+        "start": "node server",
+        "install": "napa"
+    },
+    "napa": {
+        "angular": "angular/bower-angular",
+        "angular-route": "angular/bower-angular-route"
+    }
 }

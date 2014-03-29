@@ -1,37 +1,13 @@
 var gulp = require('gulp'),
-	gutil = require('gulp-util'),
-	uglify = require('gulp-uglify'),
+    gutil = require('gulp-util'),
+    uglify = require('gulp-uglify'),
     rename = require("gulp-rename"),
-	browserify = require('gulp-browserify'),
+    browserify = require('gulp-browserify'),
     source = require('vinyl-source-stream'),
     watchify = require('watchify');
 
-// default task acts as a 'dev' environment, watching your code and compiling as you
-//  develop
-gulp.task('default', function() {
-    var bundler = watchify('./public/js/main.js');
-
-    bundler.transform('brfs');
-
-    bundler.external('angular');
-    bundler.external('angular-route');
-        
-    bundler.on('update', rebundle);
-
-    function rebundle () {
-        console.log('Bundling dev at:', new Date());
-
-        return bundler.bundle({
-                debug: true
-            })
-            .on('error', gutil.log)
-            .pipe(source('app.js'))
-            .pipe(gulp.dest('public/js/built'));
-    }
-
-    return rebundle();
-});
-
+// libs-dev task compiles all external libs, preserving sourcemaps
+//  and exposing aliases for app code to reference
 gulp.task('libs-dev', function() {
     return gulp.src('blank-seed.js')
         .pipe(browserify({
@@ -53,6 +29,8 @@ gulp.task('libs-dev', function() {
         .pipe(gulp.dest('public/js/built'));
 });
 
+// libs-prod task compiles all external libs, removing sourcemaps,
+//  exposing aliases, and minifying
 gulp.task('libs-prod', function() {
     return gulp.src('blank-seed.js')
         .pipe(browserify({
@@ -78,9 +56,36 @@ gulp.task('libs-prod', function() {
         .pipe(gulp.dest('public/js/built'));
 });
 
-// prod task acts as preparation for a production environment
-gulp.task('prod', function() {
-    console.log('Bundling prod at:', new Date());
+// default task acts as a 'dev' environment, watching your code and
+//  compiling as you develop
+gulp.task('default', function() {
+    var bundler = watchify('./public/js/main.js');
+
+    bundler.transform('brfs');
+
+    bundler.external('angular');
+    bundler.external('angular-route');
+        
+    bundler.on('update', rebundle);
+
+    function rebundle () {
+        console.log('Bundling dev at:', new Date());
+
+        return bundler.bundle({
+                debug: true
+            })
+            .on('error', gutil.log)
+            .pipe(source('app.js'))
+            .pipe(gulp.dest('public/js/built'));
+    }
+
+    return rebundle();
+});
+
+// app-prod task acts as preparation for a production environment,
+//  removing sourcemaps and minifying your app code
+gulp.task('app-prod', function() {
+    console.log('Bundling app-prod at:', new Date());
 
     return gulp.src('public/js/main.js')
         .pipe(browserify({
