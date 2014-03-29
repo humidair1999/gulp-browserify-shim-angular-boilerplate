@@ -22,7 +22,7 @@ New things are shiny! This boilerplate uses the following libraries and tools:
 #### Core concepts
 
 
-- Attempt to manage ALL dependencies via npm/napa: view the `package.json` for more info. This is in contrast to using a dependency manager like `bower`.
+- Attempt to manage ALL dependencies via `npm`/`napa`: view the `package.json` for more info. This is in contrast to using a dependency manager like `bower`.
 
 - Manage `browserify` and its shim configuration entirely via `gulp` tasks.
 
