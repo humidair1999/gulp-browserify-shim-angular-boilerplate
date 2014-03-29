@@ -1,7 +1,6 @@
 require('angular');
 require('angular-route');
 
-console.log(angular);
+var myApp = angular.module('myApp', ['ngRoute']);
 
-angular.module('myApp', ['ngRoute'])
-    .config(require('./app/routes/routes'));
+myApp.config(['$routeProvider', require('./app/routes/routes')]);

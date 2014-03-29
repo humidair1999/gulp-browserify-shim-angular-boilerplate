@@ -48,7 +48,8 @@ gulp.task('libs-prod', function() {
         })
         // handle errors to avoid gulp crashing when a watched file has errors
         .on('error', gutil.log)
-        // minify, preserving certain variables and keywords
+        // minify, preserving certain variables and keywords because we can't
+        //  necessarily trust lib authors!
         .pipe(uglify({
             mangle: false
         }))
@@ -95,10 +96,9 @@ gulp.task('app-prod', function() {
         }))
         // handle errors to avoid gulp crashing when a watched file has errors
         .on('error', gutil.log)
-        // minify, preserving certain variables and keywords
-        .pipe(uglify({
-            mangle: false
-        }))
+        // minify; don't need to prevent mangling as long as you use proper
+        //  DI syntax in angular
+        .pipe(uglify())
         .pipe(rename('app.js'))
         .pipe(gulp.dest('public/js/built'));
 });
