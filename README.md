@@ -9,10 +9,9 @@
 New things are shiny! This boilerplate uses the following libraries and tools:
 
 
-- gulp (and a few plugins)
-- browserify (via gulp-browserify)
-- angular
-- napa
+- `gulp` (and a few utility plugins)
+- `browserify` (via `gulp-browserify` and `watchify`)
+- `angular` (via `napa`)
 - HTML5BP
 - My own [nodejsSimpleBoilerplate](https://github.com/jkymarsh/nodejsSimpleBoilerplate)
 
@@ -23,9 +22,9 @@ New things are shiny! This boilerplate uses the following libraries and tools:
 #### Core concepts
 
 
-- Attempt to manage ALL dependencies via npm/napa: view the `package.json` for more info. This is in contrast to using a dependency manager like Bower.
+- Attempt to manage ALL dependencies via npm/napa: view the `package.json` for more info. This is in contrast to using a dependency manager like `bower`.
 
-- Manage browserify and its shim configuration entirely via gulp tasks.
+- Manage `browserify` and its shim configuration entirely via `gulp` tasks.
 
 - Establish logical defaults for directory structure and code organization.
 
@@ -37,10 +36,10 @@ New things are shiny! This boilerplate uses the following libraries and tools:
 
 
 1. Clone this repo with `git clone https://github.com/jkymarsh/gulp-browserify-shim-angular-boilerplate.git`
-2. Ensure you have gulp and browserify installed, if necessary
-3. `npm install` to install all dependencies and napa packages
-4. Either `npm start` to start the webserver, or use a package like supervisor or nodemon
-5. `gulp` or `gulp prod` to compile the client-side JS for the first time
+2. Ensure you have `gulp` and `browserify` installed, if necessary
+3. `npm install` to install all dependencies and `napa` packages
+4. Either `npm start` to start the webserver, or use a package like `supervisor` or `nodemon`
+5. Check out the `gulpfile` for tasks to compile both the libs and the app code, and compile each
 6. Refresh your browser and marvel with joy!
 
 
@@ -51,3 +50,12 @@ New things are shiny! This boilerplate uses the following libraries and tools:
 
 
 This is still a work-in-progress! Make sure you check out the `.gitignore` and `package.json` files.
+
+
+---
+
+
+#### Oh shit!
+
+
+There's a weird bug in the newest version(s) of `browserify` that prevent the `update` event from firing in `watchify`. After you clone this repo and run `npm install`, you may want to `cd` into watchify's directory and either downgrade its internal version of browserify, or wait until they patch it up.
