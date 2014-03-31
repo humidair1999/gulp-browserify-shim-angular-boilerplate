@@ -11,7 +11,7 @@ New things are shiny! This boilerplate uses the following libraries and tools:
 
 - `gulp` (and a few utility plugins)
 - `browserify` (via `gulp-browserify` and `watchify`)
-- `angular` (via `napa`)
+- `angular` (via `bower`)
 - HTML5BP
 - My own [nodejsSimpleBoilerplate](https://github.com/jkymarsh/nodejsSimpleBoilerplate)
 
@@ -22,9 +22,9 @@ New things are shiny! This boilerplate uses the following libraries and tools:
 #### Core concepts
 
 
-- Attempt to manage ALL dependencies via `npm`/`napa`: view the `package.json` for more info. This is in contrast to using a dependency manager like `bower`.
+- Segregate compiled 'libs' bundle from 'app' bundle; this not only makes it easier to manage third-party dependencies separately from app code, it also allows you to share the 'libs' bundle between physical pages, if necessary.
 
-- Manage `browserify` and its shim configuration entirely via `gulp` tasks.
+- Provide both 'dev' and 'prod' bundles of both the 'libs' and 'app' bundles; the 'dev' bundles preserve sourcemaps and do not minify, while the 'prod' bundles do the opposite.
 
 - Establish logical defaults for directory structure and code organization.
 
@@ -35,12 +35,13 @@ New things are shiny! This boilerplate uses the following libraries and tools:
 #### How to run
 
 
-1. Clone this repo with `git clone https://github.com/jkymarsh/gulp-browserify-shim-angular-boilerplate.git`
-2. Ensure you have `gulp` and `browserify` installed, if necessary
-3. `npm install` to install all dependencies and `napa` packages
-4. Either `npm start` to start the webserver, or use a package like `supervisor` or `nodemon`
-5. Check out the `gulpfile` for tasks to compile both the libs bundle and the app code, and compile each
-6. Refresh your browser and marvel with joy!
+1. Clone this repo, dummy
+2. Ensure you have `gulp` installed globally, if necessary
+3. `npm install`
+4. `bower install`
+5. Either `npm start` to start the webserver, or use a package like `supervisor` or `nodemon`
+6. Check out the `gulpfile` for tasks to compile both the libs bundle and the app code, and compile each
+7. Refresh your browser and marvel with joy!
 
 
 ---
@@ -49,13 +50,4 @@ New things are shiny! This boilerplate uses the following libraries and tools:
 #### Please note
 
 
-This is still a work-in-progress! Make sure you check out the `.gitignore` and `package.json` files.
-
-
----
-
-
-#### Oh shit!
-
-
-There's a weird bug in the newest version(s) of `browserify` that prevents the `update` event from firing in `watchify`. After you clone this repo and run `npm install`, you may want to `cd` into watchify's directory and either downgrade its internal version of browserify, or wait until they patch it up.
+This is still a work-in-progress! Make sure you check out the `.gitignore`, `package.json`, and `bower.json` files.
