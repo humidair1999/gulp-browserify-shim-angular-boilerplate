@@ -1,0 +1,22 @@
+{
+  "name": "gulp-browserify-shim-angular-boilerplate",
+  "version": "0.2.0",
+  "homepage": "https://github.com/jkymarsh/gulp-browserify-shim-angular-boilerplate",
+  "authors": [
+    "J. Ky Marsh <jkymarsh@gmail.com>"
+  ],
+  "description": "a boilerplate intended to get you started with express, gulp, browserify, and angular.",
+  "keywords": [
+    "express",
+    "gulp",
+    "browserify",
+    "watchify",
+    "angular",
+    "boilerplate"
+  ],
+  "private": true,
+  "devDependencies": {
+    "angular": "angular/bower-angular#~1.2.15",
+    "angular-route": "angular/bower-angular-route#~1.2.15"
+  }
+}

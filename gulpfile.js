@@ -9,40 +9,40 @@ var gulp = require('gulp'),
 // libs-dev task compiles all external libs, preserving sourcemaps
 //  and exposing aliases for app code to reference
 gulp.task('libs-dev', function() {
-    return gulp.src('blank-seed.js')
+    return gulp.src('./blank-seed.js')
         .pipe(browserify({
             // enable sourcemaps
             debug: true
         }))
         .on('prebundle', function(bundle) {
-            bundle.require('angular/angular.js', {
+            bundle.require('./bower_components/angular/angular.js', {
                 expose: 'angular'
             });
 
-            bundle.require('angular-route/angular-route.js', {
+            bundle.require('./bower_components/angular-route/angular-route.js', {
                 expose: 'angular-route'
             });
         })
         // handle errors to avoid gulp crashing when a watched file has errors
         .on('error', gutil.log)
         .pipe(rename('libs.js'))
-        .pipe(gulp.dest('public/js/built'));
+        .pipe(gulp.dest('./public/js/built'));
 });
 
 // libs-prod task compiles all external libs, removing sourcemaps,
 //  exposing aliases, and minifying
 gulp.task('libs-prod', function() {
-    return gulp.src('blank-seed.js')
+    return gulp.src('./blank-seed.js')
         .pipe(browserify({
             // disable sourcemaps
             debug: false
         }))
         .on('prebundle', function(bundle) {
-            bundle.require('angular/angular.min.js', {
+            bundle.require('./bower_components/angular/angular.min.js', {
                 expose: 'angular'
             });
 
-            bundle.require('angular-route/angular-route.min.js', {
+            bundle.require('./bower_components/angular-route/angular-route.min.js', {
                 expose: 'angular-route'
             });
         })
@@ -54,7 +54,7 @@ gulp.task('libs-prod', function() {
             mangle: false
         }))
         .pipe(rename('libs.js'))
-        .pipe(gulp.dest('public/js/built'));
+        .pipe(gulp.dest('./public/js/built'));
 });
 
 // default task acts as a 'dev' environment, watching your code and
@@ -77,7 +77,7 @@ gulp.task('default', function() {
             })
             .on('error', gutil.log)
             .pipe(source('app.js'))
-            .pipe(gulp.dest('public/js/built'));
+            .pipe(gulp.dest('./public/js/built'));
     }
 
     return rebundle();
@@ -88,7 +88,7 @@ gulp.task('default', function() {
 gulp.task('app-prod', function() {
     console.log('Bundling app-prod at:', new Date());
 
-    return gulp.src('public/js/main.js')
+    return gulp.src('./public/js/main.js')
         .pipe(browserify({
             transform: ['brfs'],
             debug: false,
@@ -100,5 +100,5 @@ gulp.task('app-prod', function() {
         //  DI syntax in angular
         .pipe(uglify())
         .pipe(rename('app.js'))
-        .pipe(gulp.dest('public/js/built'));
+        .pipe(gulp.dest('./public/js/built'));
 });
