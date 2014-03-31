@@ -9,6 +9,8 @@ var gulp = require('gulp'),
 // libs-dev task compiles all external libs, preserving sourcemaps
 //  and exposing aliases for app code to reference
 gulp.task('libs-dev', function() {
+    console.log('Bundling libs-dev at:', new Date());
+
     return gulp.src('./blank-seed.js')
         .pipe(browserify({
             // enable sourcemaps
@@ -32,6 +34,8 @@ gulp.task('libs-dev', function() {
 // libs-prod task compiles all external libs, removing sourcemaps,
 //  exposing aliases, and minifying
 gulp.task('libs-prod', function() {
+    console.log('Bundling libs-prod at:', new Date());
+
     return gulp.src('./blank-seed.js')
         .pipe(browserify({
             // disable sourcemaps
@@ -70,7 +74,7 @@ gulp.task('default', function() {
     bundler.on('update', rebundle);
 
     function rebundle () {
-        console.log('Bundling dev at:', new Date());
+        console.log('Bundling app-dev at:', new Date());
 
         return bundler.bundle({
                 debug: true
