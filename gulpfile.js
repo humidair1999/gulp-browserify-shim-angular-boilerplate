@@ -4,7 +4,8 @@ var gulp = require('gulp'),
     rename = require("gulp-rename"),
     browserify = require('gulp-browserify'),
     source = require('vinyl-source-stream'),
-    watchify = require('watchify');
+    watchify = require('watchify'),
+    server = require('./server');
 
 // libs-dev task compiles all external libs, preserving sourcemaps
 //  and exposing aliases for app code to reference
@@ -61,16 +62,23 @@ gulp.task('libs-prod', function() {
         .pipe(gulp.dest('./public/js/built'));
 });
 
+// serve task starts an express server on localhost
+gulp.task('serve', function () {
+
+    return server.serve();
+
+});
+
 // default task acts as a 'dev' environment, watching your code and
 //  compiling as you develop
-gulp.task('default', function() {
+gulp.task('default', ['libs-dev', 'serve'], function() {
     var bundler = watchify('./public/js/main.js');
 
     bundler.transform('brfs');
 
     bundler.external('angular');
     bundler.external('angular-route');
-        
+
     bundler.on('update', rebundle);
 
     function rebundle () {
@@ -89,7 +97,7 @@ gulp.task('default', function() {
 
 // app-prod task acts as preparation for a production environment,
 //  removing sourcemaps and minifying your app code
-gulp.task('app-prod', function() {
+gulp.task('app-prod', ['libs-prod'], function() {
     console.log('Bundling app-prod at:', new Date());
 
     return gulp.src('./public/js/main.js')
