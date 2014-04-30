@@ -63,14 +63,14 @@ gulp.task('libs-prod', function() {
 
 // default task acts as a 'dev' environment, watching your code and
 //  compiling as you develop
-gulp.task('default', function() {
+gulp.task('default', ['libs-dev'], function() {
     var bundler = watchify('./public/js/main.js');
 
     bundler.transform('brfs');
 
     bundler.external('angular');
     bundler.external('angular-route');
-        
+
     bundler.on('update', rebundle);
 
     function rebundle () {
@@ -89,7 +89,7 @@ gulp.task('default', function() {
 
 // app-prod task acts as preparation for a production environment,
 //  removing sourcemaps and minifying your app code
-gulp.task('app-prod', function() {
+gulp.task('app-prod', ['libs-prod'], function() {
     console.log('Bundling app-prod at:', new Date());
 
     return gulp.src('./public/js/main.js')
