@@ -4,7 +4,8 @@ var gulp = require('gulp'),
     rename = require("gulp-rename"),
     browserify = require('gulp-browserify'),
     source = require('vinyl-source-stream'),
-    watchify = require('watchify');
+    watchify = require('watchify'),
+    server = require('./server');
 
 // libs-dev task compiles all external libs, preserving sourcemaps
 //  and exposing aliases for app code to reference
