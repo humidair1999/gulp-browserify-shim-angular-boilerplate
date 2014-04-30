@@ -61,9 +61,16 @@ gulp.task('libs-prod', function() {
         .pipe(gulp.dest('./public/js/built'));
 });
 
+// serve task starts an express server on localhost
+gulp.task('serve', function () {
+
+    return server.serve();
+
+});
+
 // default task acts as a 'dev' environment, watching your code and
 //  compiling as you develop
-gulp.task('default', ['libs-dev'], function() {
+gulp.task('default', ['libs-dev', 'serve'], function() {
     var bundler = watchify('./public/js/main.js');
 
     bundler.transform('brfs');
